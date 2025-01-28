@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("JetBrainsMono-VariableFont_wght.ttf") format("ttf");
+}
 
 body {
   min-height: 100vh;
+  font-family: "JetBrains Mono", "Courier New";
 }
