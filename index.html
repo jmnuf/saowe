@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saowe | Tapes Machine</title>
+    <style>
+
+      /*
+        Currently turned off but if pixel art is introduced then this should be turned on
+        I have it here just cause I know I'll forget it and don't want to look this up again
+     */
+      /* canvas#cnv { */
+      /*   image-rendering: pixelated; */
+      /*   image-rendering: crisp-edges; */
+      /* } */
+
+      
+      /*
+        Styles for resizing stolen from Tsoding's Koil
+        https://github.com/tsoding/koil/blob/main/index.html#L61
+     */
+      @media (min-aspect-ratio: 16/9) {
+        canvas#cnv {
+          position: absolute;
+          height: calc(100% - 2rem);
+          left: 50%;
+          transform: translate(-50%, 0%)
+        }
+      }
+      @media not (min-aspect-ratio: 16/9) {
+        canvas#cnv {
+          position: absolute;
+          width: calc(100% - 2rem);
+          top: 50%;
+          transform: translate(0%, -50%)
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-slate-800 text-slate-200">
+    <div id="app" class="flex justify-center align-center pt-4">
+      <noscript>
+        <p>Required to turn on JavaScript</p>
+      </noscript>
+
+      <canvas id="cnv"></canvas>
+    </div>
+    
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
