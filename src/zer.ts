@@ -34,9 +34,24 @@ async function run<TGen extends Generator<any, TRet>, TRet>(fn: () => TGen, init
 
 const nextAnimationFrame = () => zer.yieldP(new Promise<number>(res => requestAnimationFrame((time) => res(time / 1000))));
 
+function* animate(fn: (deltaTime: number) => any) {
+  let before = yield* zer.nextAnimationFrame();
+  while (true) {
+    const now = yield* zer.nextAnimationFrame();
+    const dt = now - before;
+    const val = yield fn(dt);
+    before = now;
+    if (val === false) {
+      break;
+    }
+  }
+}
+
+
 export const zer = Object.freeze({
   yieldP,
   run,
   nextAnimationFrame,
+  animate,
 });
 

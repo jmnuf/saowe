@@ -1,3 +1,21 @@
+
+export type IUpdateable = {
+  update(dt: number): void;
+};
+
+export type IRenderable = {
+  render(ctx: CanvasRenderingContext2D): void;
+};
+
+export type IAnimated = IUpdateable & IRenderable;
+
+export type Prettify<T> = {
+  [K in keyof T]: T[K];
+};
+
+export type Vec2 = { x: number; y: number; };
+
+
 export function expDecay(fromA: number, toB: number, dt: number, decay: number = 6) {
   return toB + (fromA - toB) * Math.exp(-decay * dt);
 }
